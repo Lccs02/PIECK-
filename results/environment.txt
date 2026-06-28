@@ -1,0 +1,13 @@
+﻿CapturedAt=2026-06-22 18:10:35 +08:00
+PythonExe=D:\ANACONDA\envs\Torch2\python.exe
+Python=3.12.11 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 12:58:53) [MSC v.1929 64 bit (AMD64)]
+PyTorch=2.8.0+cu126
+NumPy=2.1.2
+TorchCUDA=12.6
+CUDAAvailable=True
+CUDADeviceCount=1
+GPU=NVIDIA GeForce RTX 4060 Laptop GPU
+NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 576.28
+OS=Microsoft Windows 11 家庭版 中文版 10.0.26200 64-bit
+RAM_GB=63.63
+CPU=Intel(R) Core(TM) i9-14900HX;Cores=24;LogicalProcessors=32

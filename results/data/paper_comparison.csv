@@ -1,0 +1,6 @@
+﻿case_id,attack,defense,paper_table,reproduced_er10,paper_er10,er10_gap_pp,reproduced_hr10,paper_hr10,hr10_gap_pp,within_5pp_both
+01_noattack_nodefense,NoAttack,NoDefense,Table III,0.1139,0.23,-0.1161,54.2948,57.16,-2.8652,True
+02_pieckipe_nodefense,PIECK-IPE,NoDefense,Table III,80.8656,87.47,-6.6044,54.4008,57.69,-3.2891,False
+03_pieckuea_nodefense,PIECK-UEA,NoDefense,Table III,88.3827,93.39,-5.0073,53.7646,57.69,-3.9254,False
+04_pieckipe_regula,PIECK-IPE,Regula,Table IV,4.4419,1.25,3.1919,58.3245,56.31,2.0145,True
+05_pieckuea_regula,PIECK-UEA,Regula,Table IV,10.8201,0.0,10.8201,55.9915,55.89,0.1015,False

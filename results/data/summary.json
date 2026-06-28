@@ -1,0 +1,9 @@
+{
+  "rows": 1505,
+  "runs": 5,
+  "all_reached_epoch_300": true,
+  "pieckuea_attack_effective": true,
+  "regula_uea_substantially_reduces_er": true,
+  "regula_uea_below_10pct": false,
+  "all_metrics_within_5pp": false
+}

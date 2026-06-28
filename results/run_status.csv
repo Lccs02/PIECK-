@@ -1,0 +1,6 @@
+case_id,attack,defense,epochs,exit_code,complete,log
+01_noattack_nodefense,NoAttack,NoDefense,300,0,True,results/logs/01_noattack_nodefense.log
+02_pieckipe_nodefense,PIECKIPE,NoDefense,300,0,True,results/logs/02_pieckipe_nodefense.log
+03_pieckuea_nodefense,PIECKUEA,NoDefense,300,0,True,results/logs/03_pieckuea_nodefense.log
+04_pieckipe_regula,PIECKIPE,Regula,300,0,True,results/logs/04_pieckipe_regula.log
+05_pieckuea_regula,PIECKUEA,Regula,300,0,True,results/logs/05_pieckuea_regula.log
