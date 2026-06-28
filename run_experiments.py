@@ -35,26 +35,26 @@ def default_device() -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run the PIECK MF-FRS reproduction experiments and parse the results."
+        description="运行 PIECK MF-FRS 复现实验，并在完成后解析结果。"
     )
-    parser.add_argument("--python", default=sys.executable, help="Python executable used to run MF-FRS/main.py.")
-    parser.add_argument("--epochs", type=int, default=300, help="Training epochs for each case. Default: 300")
-    parser.add_argument("--device", default=default_device(), help="Torch device. Default: cuda:0 if available, else cpu")
-    parser.add_argument("--dataset", default="ML-100K", help="Dataset name under MF-FRS/Data/. Default: ML-100K")
+    parser.add_argument("--python", default=sys.executable, help="用于运行 MF-FRS/main.py 的 Python 解释器。")
+    parser.add_argument("--epochs", type=int, default=300, help="每组实验训练轮数。默认：300")
+    parser.add_argument("--device", default=default_device(), help="Torch 运行设备。默认：有 GPU 时为 cuda:0，否则为 cpu")
+    parser.add_argument("--dataset", default="ML-100K", help="MF-FRS/Data/ 下的数据集名称。默认：ML-100K")
     parser.add_argument(
         "--results-dir",
         default="results",
-        help="Directory for logs, parsed data, figures, and status. Default: results",
+        help="日志、解析结果、曲线图和运行状态的输出目录。默认：results",
     )
     parser.add_argument(
         "--cases",
         nargs="+",
         default=["all"],
-        help="Case ids to run, or 'all'. Example: --cases 02_pieckipe_nodefense 03_pieckuea_nodefense",
+        help="要运行的实验编号，或使用 all 运行全部。例如：--cases 02_pieckipe_nodefense 03_pieckuea_nodefense",
     )
-    parser.add_argument("--force", action="store_true", help="Re-run cases even if their logs already reached --epochs.")
-    parser.add_argument("--skip-parse", action="store_true", help="Do not run parse_results.py after experiments.")
-    parser.add_argument("--dry-run", action="store_true", help="Print commands without running experiments.")
+    parser.add_argument("--force", action="store_true", help="即使日志已达到 --epochs，也强制重新运行对应实验。")
+    parser.add_argument("--skip-parse", action="store_true", help="实验完成后不自动运行 parse_results.py。")
+    parser.add_argument("--dry-run", action="store_true", help="只打印命令，不实际启动训练。")
     return parser.parse_args()
 
 
@@ -72,7 +72,7 @@ def select_cases(values: list[str]) -> list[dict[str, object]]:
     unknown = [value for value in values if value not in available]
     if unknown:
         names = ", ".join(available)
-        raise SystemExit(f"Unknown case id(s): {', '.join(unknown)}. Available: {names}")
+        raise SystemExit(f"未知实验编号：{', '.join(unknown)}。可用编号：{names}")
     return [available[value] for value in values]
 
 
@@ -213,9 +213,9 @@ def main() -> None:
     logs_dir = results_dir / "logs"
 
     if args.dry_run:
-        print(f"Project root: {ROOT}")
-        print(f"Source dir: {SOURCE_DIR}")
-        print(f"Results dir: {results_dir}")
+        print(f"项目根目录：{ROOT}")
+        print(f"源码目录：{SOURCE_DIR}")
+        print(f"结果目录：{results_dir}")
         for case in selected_cases:
             print(f"[dry-run] {case['case_id']}: {quote_command(build_command(args, case))}")
         return
@@ -231,7 +231,7 @@ def main() -> None:
             relative_log = str(log_path)
 
         if not args.force and log_reached_epoch(log_path, args.epochs):
-            print(f"[skip] {case_id} already reached Iteration {args.epochs}")
+            print(f"[skip] {case_id} 已到达 Iteration {args.epochs}，跳过")
             status_rows.append(
                 {
                     "case_id": case_id,
@@ -263,7 +263,7 @@ def main() -> None:
         )
         write_status(results_dir, status_rows)
         if exit_code != 0 or not complete:
-            raise SystemExit(f"Experiment failed or stopped early: {case_id}, exit={exit_code}, complete={complete}")
+            raise SystemExit(f"实验失败或提前停止：{case_id}, exit={exit_code}, complete={complete}")
 
     if not args.skip_parse:
         parse_command = [

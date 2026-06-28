@@ -35,18 +35,18 @@ ITER_RE = re.compile(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Parse PIECK MF-FRS logs into CSV summaries and figures."
+        description="解析 PIECK MF-FRS 日志，生成 CSV 汇总表和曲线图。"
     )
     parser.add_argument(
         "--results-dir",
         default="results",
-        help="Directory containing logs/ and receiving data/ and figures/. Default: results",
+        help="结果目录，需包含 logs/，并用于输出 data/ 和 figures/。默认：results",
     )
     parser.add_argument(
         "--expected-epochs",
         type=int,
         default=300,
-        help="Expected final epoch in each log. Default: 300",
+        help="每个日志应达到的最终 epoch。默认：300",
     )
     return parser.parse_args()
 

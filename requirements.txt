@@ -1,4 +1,4 @@
-# Tested environment:
+# 已验证环境：
 # Python 3.12.11
 # CUDA 12.6 / NVIDIA Driver 576.28
 --extra-index-url https://download.pytorch.org/whl/cu126
